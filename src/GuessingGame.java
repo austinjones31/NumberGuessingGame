@@ -9,49 +9,47 @@ public class GuessingGame {
     Random random = new Random();
     int computerNumber = random.nextInt(10) + 1;
     UserInput userInput = new UserInput();
-    boolean correctGuess;
+    boolean guessIsCorrect;
     do {
       userInput.readInput();
-      int userGuess = userInput.getGuess();
-      correctGuess = new NumberMatch(computerNumber, userGuess).evaluateGuess();
-    } while (!correctGuess);
+      int userGuess = userInput.getUserGuess();
+      guessIsCorrect = new NumberMatcher(computerNumber, userGuess).isMatch();
+    } while (!guessIsCorrect);
   }
 }
 
 class UserInput {
 
-  String guessInput;
-  int guess;
+  int userGuess;
   BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
   public void readInput() {
     System.out.println("Guess a number between 1 and 10.");
     try {
-      this.guessInput = this.input.readLine();
-      this.guess = Integer.parseInt(this.guessInput);
-      assert this.guess < 11 && this.guess > 0;
+      this.userGuess = Integer.parseInt(this.input.readLine());
+      assert this.userGuess < 11 && this.userGuess > 0;
     } catch (IOException | NumberFormatException | AssertionError e) {
-      System.out.println("That is not an integer between 1 and 10.");
+      System.out.print("That is not an integer between 1 and 10. ");
       readInput();
     }
   }
 
-  public int getGuess() {
-    return this.guess;
+  public int getUserGuess() {
+    return this.userGuess;
   }
 }
 
-class NumberMatch {
+class NumberMatcher {
 
   int computerNumber;
   int userGuess;
 
-  NumberMatch(int computerNumber, int userGuess) {
+  NumberMatcher(int computerNumber, int userGuess) {
     this.computerNumber = computerNumber;
     this.userGuess = userGuess;
   }
 
-  public boolean evaluateGuess() {
+  public boolean isMatch() {
     if (this.userGuess == this.computerNumber) {
       System.out.println(
         "You got it! The number is " + this.computerNumber + "."
