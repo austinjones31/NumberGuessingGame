@@ -24,7 +24,7 @@ class UserInput {
   BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
   public void readInput() {
-    System.out.println("Guess a number between 1 and 10.");
+    System.out.println("Guess a number between 1 and 10:");
     try {
       this.userGuess = Integer.parseInt(this.input.readLine());
       assert this.userGuess < 11 && this.userGuess > 0;
