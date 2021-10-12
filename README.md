@@ -4,6 +4,6 @@ Thanks for viewing this repo. This is a little game that I implemented using Jav
 
 #### 1. Clone or download.
 
-#### 2. From command line of directory, run `java -ea GuessingGame`.
+#### 2. From command line of directory, run `java -ea src/GuessingGame`.
 
 #### 3. Enjoy!
