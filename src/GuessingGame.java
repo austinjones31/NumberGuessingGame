@@ -7,7 +7,7 @@ public class GuessingGame {
 
   public static void main(String[] args) {
     Random random = new Random();
-    int computerNumber = random.nextInt((10 - 1) + 1);
+    int computerNumber = random.nextInt(10) + 1;
     UserInput userInput = new UserInput();
     boolean correctGuess;
     do {
